@@ -13,22 +13,40 @@ const handleAddButton = () => {
 
   dispatch({
     type: 'add',
-    payload: {
-      text: addField.trim()
-    }
+    payload: { text: addField.trim() }
   });
-
+// Limpando o input 
   setAddField('');
 }
-
+// Checkbox
 const handleDoneCheckbox = (id: number) => {
   dispatch({
     type: 'toggleDone',
     payload: {id}
   });
 } 
+// Boatão de Editar
+const handleEdit = (id:number) => {
+  const item = list.find(it => it.id === id);
+    if(!item) return false;
 
+      const newText = window.prompt('Editar Tarefa', item.text);
+      if(!newText || newText.trim() === '') return false;
 
+        dispatch({
+          type: 'editText',
+          payload: { id, newText }
+        });
+}
+// Botão de deletar com confirmação
+const handleRemove = (id: number) => {
+  if(!window.confirm('Tem certeza que deseja excluir o item?')) return false;
+
+  dispatch({
+    type: 'remove',
+    payload: {id}
+  });
+}
 
   return (
     <div className="container mx-auto">
@@ -59,8 +77,8 @@ const handleDoneCheckbox = (id: number) => {
             onClick={() => handleDoneCheckbox(item.id)}
             />
           <p className="flex-1 text-lg">{item.text}</p>
-          <button className="mx-4 text-white hover:text-gray-500">Editar</button>  
-          <button className="mx-4 text-white hover:text-gray-500">Excluir</button>  
+          <button onClick={() => handleEdit(item.id)} className="mx-4 text-white hover:text-gray-500">Editar</button>  
+          <button onClick={() => handleRemove(item.id)} className="mx-4 text-white hover:text-gray-500">Excluir</button>  
           </li>
         ))}
       </ul>
