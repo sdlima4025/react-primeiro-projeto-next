@@ -4,18 +4,30 @@
 // import {useReducer, useState} from 'react';
 // import { Item } from '../types/Item';
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/footer";
 // import { CountProvider } from "@/contexts/CountContext";
-import { LoggedUserProvider } from "@/contexts/LoggedUser";
+// import { LoggedUserProvider } from "@/contexts/LoggedUser";
 
 const Page = () => {
-  
-    return(
+  return(
       <div className="container mx-auto">
-        <LoggedUserProvider>
+        
           <Header/>
-        </LoggedUserProvider>
+            {}
+          <Footer/>
+      
       </div>
     )
+
+
+    // Context User Logado
+    // return(
+    //   <div className="container mx-auto">
+    //     <LoggedUserProvider>
+    //       <Header/>
+    //     </LoggedUserProvider>
+    //   </div>
+    // )
     // PROVIDER 1
 // const Page = () => {
   

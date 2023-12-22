@@ -10,14 +10,14 @@ export const Header = () => {
   return (
     <header>
       <h1 className="text-3xl">Título da Página</h1>
-      {loggedUserCtx?.name && (
+      {/* {loggedUserCtx?.name && (
         <>
           <p>Usuário Logado: {loggedUserCtx?.name} </p>
           <button onClick={handleLogout}>Sair</button>
         </>
       )}
       {(!loggedUserCtx || loggedUserCtx?.name === '') && 
-        <p>Usuário Deslogado</p>}
+        <p>Usuário Deslogado</p>} */}
     </header>
   );
 };
