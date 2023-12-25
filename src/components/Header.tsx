@@ -1,13 +1,18 @@
 import { LoggedUserContext } from "@/contexts/LoggedUser";
+import { PostContext } from "@/contexts/PostContext";
 import { useContext, useState } from "react";
 
 export const Header = () => {
+  const postCtx = useContext(PostContext);
+
   const[titleInput, setTitleInput] = useState('');
   const[bodyInput, setBodyInput] = useState('');
 
   const handleAddButton = () => {
     if(titleInput && bodyInput) {
-      
+      postCtx?.addPost(titleInput, bodyInput);
+      setTitleInput('');
+      setBodyInput('');
     }
   }
 
@@ -34,7 +39,7 @@ export const Header = () => {
           value={bodyInput}
           onChange={e => setBodyInput(e.target.value)}
         ></textarea>
-        <button onClick={handleAddButton} className="bg-blue-500 p-3 text-white rounded-md">Adicionar</button>
+        <button onClick={handleAddButton} className="bg-blue-500 p-3 text-white rounded-md ">Adicionar</button>
       </div>
       {/* {loggedUserCtx?.name && (
         <>
